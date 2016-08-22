@@ -4,8 +4,7 @@ module.exports = {
         return {
             message: "Unknown listen type " + type,
             code: ++code,
-            type: type,
-            options: opts
+            transport: opts
         }
     }
 }

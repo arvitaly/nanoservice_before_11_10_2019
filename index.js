@@ -43,7 +43,9 @@ module.exports = function (service, config) {
                     transports[transportName] = socketServer(config.transports[transportName].opts);
                     break;
                 default:
-                    throw new Error(errors.unknownTransportType(config.transports[transportName], config.transports[transportName].type))
+                    var err = errors.unknownTransportType(config.transports[transportName].type, config.transports[transportName])
+                    console.error(err)
+                    throw new Error(err)
             }
         }
     }
