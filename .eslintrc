@@ -1,0 +1,21 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "extends": [
+    "eslint:recommended"
+  ],
+  "rules": {
+    "comma-dangle": 0,
+    "no-console": 0
+  },
+  "ignore": [
+    "./node_modules"
+  ],
+  "env": {
+    "node": true,
+    "es6": true,
+    "jasmine": true
+  }
+}
