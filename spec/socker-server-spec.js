@@ -25,13 +25,14 @@ describe("Socket server communication", () => {
                     {
                         transport: "tr1",
                         type: "in",
-                        name: "in1"
+                        name: "in1",
+                        to: "event3"
                     }
                 ]
             })
         ipc.connectTo(address, function () {
             ipc.of[address].on('connect', function () {
-                ipc.of[address].emit("in1", fixture1);
+                ipc.of[address].emit("event3", fixture1);
             })
         })
     });
@@ -58,7 +59,8 @@ describe("Socket server communication", () => {
                     {
                         transport: "tr1",
                         type: "out",
-                        name: "out13"
+                        name: "out13",
+                        to: "event4"
                     }
                 ]
             }
@@ -70,7 +72,7 @@ describe("Socket server communication", () => {
                     cb(fixture1)
                 }, 50)
             })
-            ipc.of[address].on("out13", function (data) {
+            ipc.of[address].on("event4", function (data) {
                 expect(data).toBe(fixture1);
                 done();
             })

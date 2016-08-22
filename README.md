@@ -26,7 +26,8 @@ Module for agile interservice-communication with support different transports (l
                     {
                         transport: "tr1",
                         type: "out",
-                        name: "out1"
+                        name: "out1",
+                        to: "event1"
                     }
                 ]
             }

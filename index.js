@@ -53,12 +53,12 @@ module.exports = function (service, config) {
         config.links.map((link) => {
             var client = transports[link.transport];
             if (link.type == "in") {
-                client.in(link.name, (function (name, data) {
+                client.in(link.to, (function (name, data) {
                     this.emit(name, data);
                 }).bind(nanoservice, link.name));
             }
             if (link.type == "out") {
-                nanoservice.on(link.name, client.out(link.name));
+                nanoservice.on(link.name, client.out(link.to));
             }
         })
     }
@@ -80,7 +80,8 @@ module.exports = function (service, config) {
         links:[{
             type: in,
             transport: "tr1",
-            name: "in1"
+            name: "in1",
+            to: "event1"
         }
     }]
 */
