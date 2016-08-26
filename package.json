@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine"
+    "test": "flow check && jasmine"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
     "node-ipc": "^8.1.1"
   },
   "devDependencies": {
+    "flow-bin": "^0.31.1",
     "jasmine": "^2.4.1"
   }
 }

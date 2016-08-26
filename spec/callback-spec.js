@@ -1,3 +1,4 @@
+// @flow
 var nanoservice = require('./../index');
 describe("Internal communication", () => {
     it("in", () => {

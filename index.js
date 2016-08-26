@@ -1,7 +1,11 @@
+// @flow
+/*::import type {Service} from "./interfaces/service"*/
+/*::import type {Config} from "./interfaces/config"*/
 var errors = require('./errors');
 var socketClient = require('./socket-client');
 var socketServer = require('./socket-server');
-module.exports = function (service, config) {
+
+module.exports = function (service/*:Service*/, config/*:Config*/) {
     config = config || {};
     var nanoservice = {}
     nanoservice.out = {};
@@ -25,10 +29,10 @@ module.exports = function (service, config) {
         nanoservice.in[inName] = []
     }
 
-    nanoservice.on = function (event, callback) {
+    nanoservice.on = function (event/*:string*/, callback/*:function*/) {
         nanoservice.out[event].subsribers.push(callback);
     }
-    nanoservice.emit = function (event, data) {
+    nanoservice.emit = function (event/*:string*/, data/*:any*/) {
         service.in[event](data);
     }
     var transports = {};
