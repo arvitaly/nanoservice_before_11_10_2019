@@ -1,6 +1,7 @@
+/*::import type {Options} from './interfaces/socket-client'*/
 var ipcRoot = require('node-ipc');
 
-module.exports = function (opts) {
+module.exports = function (opts:/*:Options*/) {
     var ipc = new ipcRoot.IPC
     opts = opts || {}
     ipc.config.id = opts.id || process.env.ID || 'hello';

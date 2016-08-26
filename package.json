@@ -21,6 +21,9 @@
     "node-ipc": "^8.1.1"
   },
   "devDependencies": {
+    "babel-eslint": "^6.1.2",
+    "eslint": "^3.3.1",
+    "eslint-plugin-flowtype": "^2.11.4",
     "flow-bin": "^0.31.1",
     "jasmine": "^2.4.1"
   }
