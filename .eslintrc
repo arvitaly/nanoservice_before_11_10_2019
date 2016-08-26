@@ -12,7 +12,13 @@
   ],
   "rules": {
     "flowtype/define-flow-type": 1,
+    "flowtype/require-parameter-type": 0,
+    "flowtype/type-id-match": [
+      1,
+      "^([A-Z][a-z0-9]+)+Type$"
+    ],
     "flowtype/use-flow-type": 1,
+    "flowtype/valid-syntax": 1,
     "comma-dangle": 0,
     "no-console": 0
   },
@@ -24,5 +30,10 @@
     "node": true,
     "es6": true,
     "jasmine": true
+  },
+  "settings": {
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": false
+    }
   }
 }

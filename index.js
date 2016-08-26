@@ -4,8 +4,7 @@
 var errors = require('./errors');
 var socketClient = require('./socket-client');
 var socketServer = require('./socket-server');
-
-module.exports = function (service:Service, config/*:Config*/) {
+module.exports = function (service/*:Service*/, config/*:Config*/) {
     config = config || {};
     var nanoservice = {}
     nanoservice.out = {};
