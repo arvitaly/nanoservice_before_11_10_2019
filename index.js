@@ -4,6 +4,7 @@
 var errors = require('./errors');
 var socketClient = require('./socket-client');
 var socketServer = require('./socket-server');
+var internalServer = require('./internal');
 module.exports = function (service/*:Service*/, config/*:Config*/) {
     config = config || {};
     var nanoservice = {}
@@ -44,6 +45,9 @@ module.exports = function (service/*:Service*/, config/*:Config*/) {
                     break;
                 case "socket-server":
                     transports[transportName] = socketServer(config.transports[transportName].opts);
+                    break;
+                case "internal":
+                    transports[transportName] = internalServer(config.transports[transportName].opts);
                     break;
                 default:
                     var err = errors.unknownTransportType(config.transports[transportName].type, config.transports[transportName])
