@@ -33,7 +33,11 @@ Module for agile interservice-communication with support different transports (l
             }
     nanoservice(service, config)
 
-#Internal using
+#Transports
+
+Now supported 2 transport: sockets and internal
+
+#Event-emitter using
 
 Inside process, you can use nanoservice like as simple event-emitter.
 
