@@ -7,5 +7,11 @@ module.exports = {
             code: ++code,
             transport: opts
         }
+    },
+    unknownService: (name/*:string*/, config/*:{}*/) => {
+        return {
+            message: "Unknown service " + name,
+            config: config
+        }
     }
 }
