@@ -1,6 +1,4 @@
 language: node_js
 node_js:
   - "6"
-install:
-  - cd ./common && npm install
-  - cd ./common && npm test
+script: cd common && npm install && npm test
