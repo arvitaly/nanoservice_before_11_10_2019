@@ -1,16 +1,22 @@
 module.exports = (opts/*:{address:string}*/) => {
-    if (!global['___nanoservices']) {
-        global['___nanoservices'] = {}
+    var globalS
+    if (typeof (global) == "undefined") {
+        globalS = window;
+    }else{
+        globalS = global;
+    }
+    if (!globalS['___nanoservices']) {
+        globalS['___nanoservices'] = {}
     }
     opts = opts || {};
     opts.address = opts.address || "default";
 
     var server;
-    if (!global['___nanoservices'][opts.address]) {
+    if (!globalS['___nanoservices'][opts.address]) {
         server = new Server;
-        global['___nanoservices'][opts.address] = server;
+        globalS['___nanoservices'][opts.address] = server;
     } else {
-        server = global['___nanoservices'][opts.address];
+        server = globalS['___nanoservices'][opts.address];
     }
 
 
