@@ -33,15 +33,15 @@ var Nanoservice = function (service/*:Service*/, config/*:Config*/) {
         service.in[event](data);
     }
     var transports = {};
-    //Add links
+    //Add links    
     if (config.transports) {
         for (var transportName in config.transports) {
-            if (!Nanoservice[config.transports[transportName].type]) {
+            if (!Nanoservice.transports[config.transports[transportName].type]) {
                 var err = errors.unknownTransportType(config.transports[transportName].type, config.transports[transportName])
                 console.error(err)
                 throw new Error(err)
             }
-            transports[transportName] = Nanoservice[config.transports[transportName].type](config.transports[transportName].opts);
+            transports[transportName] = Nanoservice.transports[config.transports[transportName].type](config.transports[transportName].opts);
         }
     }
     if (config.links) {

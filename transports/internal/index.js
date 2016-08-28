@@ -1,5 +1,3 @@
-// @flow
-/*:: import type {TransportType} from './interfaces/transport'*/
 module.exports = (opts/*:{address:string}*/) => {
     if (!global['___nanoservices']) {
         global['___nanoservices'] = {}

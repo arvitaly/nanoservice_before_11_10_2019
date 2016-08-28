@@ -1,5 +1,6 @@
 var ipc = require('node-ipc');
-var nanoservice = require('./../index');
+var nanoservice = require('nanoservice');
+nanoservice.use("socket-server", require('./../index'));
 describe("Socket server communication", () => {
     it("in", (done) => {
         var address = "addr3";

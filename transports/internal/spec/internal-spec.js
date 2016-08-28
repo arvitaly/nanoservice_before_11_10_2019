@@ -1,5 +1,7 @@
 // @flow
-var nanoservice = require('./../index');
+var nanoservice = require('nanoservice');
+var internalTransport = require('./../index');
+nanoservice.use("internal", internalTransport);
 describe("Internal communication", () => {
     it("in", () => {
         var test;

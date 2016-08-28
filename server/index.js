@@ -1,4 +1,4 @@
-var nanoservice = require('./index');
+var nanoservice = require('nanoservice');
 var errors = require('./errors');
 var express = require('express');
 module.exports = (opts/*:{address:string, services:{}}*/, callback) => {

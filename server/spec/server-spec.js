@@ -1,5 +1,7 @@
-var server = require('./../server');
+var server = require('./../index');
 var fetch = require('node-fetch');
+var nanoservice = require('nanoservice');
+nanoservice.use("internal", require('nanoservice-transport-internal'));
 describe("Nanoservices server", () => {
     it("start", (done) => {
         var fixture1 = "test123";

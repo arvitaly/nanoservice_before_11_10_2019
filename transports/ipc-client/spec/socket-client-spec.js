@@ -1,5 +1,6 @@
 var ipc = require('node-ipc');
-var nanoservice = require('./../index');
+var nanoservice = require('nanoservice');
+nanoservice.use("socket-client", require('./../index'));
 describe("Socket client communication", () => {
     it("in", (done) => {
         var fixture1 = "data1";

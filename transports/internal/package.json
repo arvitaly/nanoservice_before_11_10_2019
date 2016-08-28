@@ -1,0 +1,16 @@
+{
+  "name": "nanoservice-transport-internal",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "nanoservice": "^0.0.7",
+    "jasmine": "^2.4.1"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
