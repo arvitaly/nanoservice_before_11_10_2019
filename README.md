@@ -7,6 +7,7 @@ Module for agile interservice-communication with support different transports (l
 
 #Example
     var nanoservice = require('nanoservice');
+    //Add transport with any name
     nanoservice.use('ipc-server', require('nanoservice-transport-ipc-server'));
     var service = {
             out: {
