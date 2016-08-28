@@ -2,10 +2,7 @@
 /*::import type {Service} from "./interfaces/service"*/
 /*::import type {Config} from "./interfaces/config"*/
 var errors = require('./errors');
-var socketClient = require('./socket-client');
-var socketServer = require('./socket-server');
-var internalServer = require('./internal');
-module.exports = function (service/*:Service*/, config/*:Config*/) {
+var Nanoservice = function (service/*:Service*/, config/*:Config*/) {
     config = config || {};
     var nanoservice = {}
     nanoservice.out = {};
@@ -39,21 +36,12 @@ module.exports = function (service/*:Service*/, config/*:Config*/) {
     //Add links
     if (config.transports) {
         for (var transportName in config.transports) {
-            switch (config.transports[transportName].type) {
-                case "socket-client":
-                    transports[transportName] = socketClient(config.transports[transportName].opts);
-                    break;
-                case "socket-server":
-                    transports[transportName] = socketServer(config.transports[transportName].opts);
-                    break;
-                case "internal":
-                    transports[transportName] = internalServer(config.transports[transportName].opts);
-                    break;
-                default:
-                    var err = errors.unknownTransportType(config.transports[transportName].type, config.transports[transportName])
-                    console.error(err)
-                    throw new Error(err)
+            if (!Nanoservice[config.transports[transportName].type]) {
+                var err = errors.unknownTransportType(config.transports[transportName].type, config.transports[transportName])
+                console.error(err)
+                throw new Error(err)
             }
+            transports[transportName] = Nanoservice[config.transports[transportName].type](config.transports[transportName].opts);
         }
     }
     if (config.links) {
@@ -71,7 +59,13 @@ module.exports = function (service/*:Service*/, config/*:Config*/) {
     }
     return nanoservice;
 }
+Nanoservice.use = function (transportName/*:string*/, transport) {
+    Nanoservice.transports[transportName] = transport;
+}
+Nanoservice.transports = {
 
+};
+module.exports = Nanoservice;
 /*Config interface
     {
         transports:{
