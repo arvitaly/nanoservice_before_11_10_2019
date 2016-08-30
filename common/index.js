@@ -18,9 +18,9 @@ var Nanoservice = function (service/*:Service*/, config/*:Config*/) {
             })
         }).bind(undefined, outName)
         nanoservice.out[outName].func = cb;
-        setTimeout(() => {
+        setTimeout(((service, outName, cb) => {
             service.out[outName](cb);
-        })
+        }).bind(undefined, service, outName, cb))
     }
     for (var inName in service.in) {
         nanoservice.in[inName] = []
