@@ -1,8 +1,8 @@
 var code = 0;
 module.exports = {
-    unknownTransportType: (type/*:string*/, opts/*:{}*/) => {
+    unknownTransportType: (type, opts) => {
         return {
-            message: "Unknown listen type " + type,
+            message: "Unknown transport type:: " + type,
             code: ++code,
             transport: opts
         }
