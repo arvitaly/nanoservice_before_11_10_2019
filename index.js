@@ -1,8 +1,5 @@
-// @flow
-/*::import type {Service} from "./interfaces/service"*/
-/*::import type {Config} from "./interfaces/config"*/
 var errors = require('./errors');
-var Nanoservice = function (service/*:Service*/, config/*:Config*/) {
+var Nanoservice = function (service, config) {
     config = config || {};
     var nanoservice = {}
     nanoservice.out = {};
@@ -66,36 +63,3 @@ Nanoservice.transports = {
 
 };
 module.exports = Nanoservice;
-/*Config interface
-    {
-        transports:{
-            "tr1":{
-                type: "socket-client",
-                opts:{
-                    id,
-                    retry,
-                    address
-                },
-            }
-        },
-        links:[{
-            type: in,
-            transport: "tr1",
-            name: "in1",
-            to: "event1"
-        }
-    }]
-*/
-
-/*Service interface
-    in:{
-        in1: function(){
-            doSomething()
-        }
-    },
-    out:{
-        out1: function(callback){
-            callback(args)
-        }
-    }
-*/
