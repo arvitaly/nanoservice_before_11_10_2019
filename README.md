@@ -1,6 +1,7 @@
 #NanoService
 [![Build Status](https://travis-ci.org/arvitaly/node-nanoservice.svg?branch=master)](https://travis-ci.org/arvitaly/node-nanoservice)
 [![npm version](https://badge.fury.io/js/nanoservice.svg)](https://badge.fury.io/js/nanoservice)
+[![Coverage Status](https://coveralls.io/repos/github/arvitaly/node-nanoservice/badge.svg?branch=master)](https://coveralls.io/github/arvitaly/node-nanoservice?branch=master)
 
 Module for agile interservice-communication with support different transports (like as socket). Every service can has many `in` and `out` links. Every link can has many connections by different transport (example, socket-client or socket-server).
 
