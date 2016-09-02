@@ -46,6 +46,7 @@ Module for agile interservice-communication with support different transports (l
 #Transports
 
 Internal transport: https://github.com/arvitaly/nanoservice-transport-internal
+
 IPC transports: https://github.com/arvitaly/nanoservice-transport-ipc-client, https://github.com/arvitaly/nanoservice-transport-ipc-server
 
 #Event-emitter using
