@@ -1,6 +1,6 @@
 {
   "name": "nanoservice",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Module for agile interservice-communication with support many transports",
   "main": "index.js",
   "scripts": {
@@ -21,6 +21,6 @@
   "devDependencies": {
     "coveralls": "^2.11.12",
     "istanbul": "^0.4.5",
-    "jasmine": "^2.5.0"
+    "jasmine": "2.4.1"
   }
 }
