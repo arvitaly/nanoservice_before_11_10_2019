@@ -2,3 +2,4 @@ language: node_js
 node_js:
   - "6"
 script: cd common && npm install && npm test && cd ./../server && npm install && npm test && cd ./../transports/internal && npm install && npm test && cd ../ipc-client && npm install && npm test && cd ../ipc-server && npm install && npm test
+after_script: cd common && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
