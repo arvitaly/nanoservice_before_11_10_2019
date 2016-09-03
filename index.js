@@ -1,6 +1,7 @@
 var errors = require('./errors');
 var extend = require('deep-extend');
 var EventEmitter2 = require('eventemitter2').EventEmitter2;
+var serviceController = require('./services');
 module.exports = (opts) => {
     opts = extend({
         transports: {}
@@ -23,12 +24,7 @@ module.exports = (opts) => {
                     emitter.emit(name, data);
                 }
             },
-            services: {
-                add: () => { },
-                set: () => { },
-                remove: () => { },
-                removeAll: () => { }
-            },
+            services: serviceController(config.services),
             env: (name) => {
                 return config.env[name];
             }

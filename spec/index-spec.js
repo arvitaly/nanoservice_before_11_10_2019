@@ -1,10 +1,20 @@
-var Nanoservice = require('./../index');
+var mock = require('mock-require');
 var errors = require('./../errors');
 var fixture1 = "fix1";
 var fixture2 = "fix2";
 var fixture3 = "fix3";
 var fixture4 = "fix4";
 describe("NanoService", () => {
+    var Nanoservice;
+    var ServiceController;
+    beforeAll(() => {
+        ServiceController = jasmine.createSpy();
+        mock('./../services', ServiceController);
+        Nanoservice = require('./../index');
+    })
+    beforeEach(()=>{
+        ServiceController.calls.reset();
+    })
     it("when create without links and transports should work as event emitter with args and env", () => {
         var service1 = (opts) => {
             return {
@@ -82,18 +92,35 @@ describe("NanoService", () => {
         it("when set transport and out-link", () => {
             //Add transport out spy
             var outTransportCallbackSpy = jasmine.createSpy();
-            outTransportSpy.and.returnValue(outTransportCallbackSpy);            
+            outTransportSpy.and.returnValue(outTransportCallbackSpy);
             //Create nanoservice
             var nanoservice1 = nanoservice(serviceSpy, {
                 transports: { "t": { type: "tr1" } },
                 links: [{ type: "out", name: fixture1, transport: "t", to: fixture2 }]
-            });              
+            });
             //Check transport out-subscribe            
             expect(outTransportSpy.calls.allArgs()).toEqual([[fixture2]]);
             //Subscribe on service 
             nanoservice1.emit(fixture1, fixture3);
             //Check transport out call
-            expect(outTransportCallbackSpy.calls.allArgs()).toEqual([[fixture3]]);                        
+            expect(outTransportCallbackSpy.calls.allArgs()).toEqual([[fixture3]]);
         })
+    })
+    describe("Sub services", () => {
+        it("when create service, service-controller should be created", () => {
+            var service1 = jasmine.createSpy();
+            ServiceController.and.returnValue(fixture2)
+            Nanoservice()(service1, {
+                services: {
+                    "service2Class": fixture1
+                }
+            });            
+            expect(ServiceController.calls.allArgs()).toEqual([[{ "service2Class": fixture1 }]]);
+            expect(service1.calls.argsFor(0)[0].services).toBe(fixture2);
+            
+        })
+    })
+    afterAll(() => {
+        mock.stopAll();
     })
 })
