@@ -26,6 +26,6 @@
     "coveralls": "^2.11.12",
     "istanbul": "^0.4.5",
     "jasmine": "2.4.1",
-    "mock-require": "^1.3.0"
+    "mock2": "0.0.4"
   }
 }

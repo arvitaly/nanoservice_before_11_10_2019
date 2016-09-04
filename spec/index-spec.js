@@ -1,4 +1,4 @@
-var mock = require('mock-require');
+var mock = require('mock2');
 var errors = require('./../errors');
 var fixture1 = "fix1";
 var fixture2 = "fix2";
@@ -9,8 +9,9 @@ describe("NanoService", () => {
     var ServiceController;
     beforeAll(() => {
         ServiceController = jasmine.createSpy();
-        mock('./../services', ServiceController);
-        Nanoservice = require('./../index');
+        Nanoservice = mock.require('./../index',{
+            './../services': ServiceController
+        });
     })
     beforeEach(()=>{
         ServiceController.calls.reset();
@@ -119,8 +120,5 @@ describe("NanoService", () => {
             expect(service1.calls.argsFor(0)[0].services).toBe(fixture2);
             
         })
-    })
-    afterAll(() => {
-        mock.stopAll();
     })
 })
