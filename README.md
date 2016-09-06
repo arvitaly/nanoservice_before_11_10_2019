@@ -17,7 +17,18 @@ Module for agile interservice-communication with support different transports (l
             in1: (data)=>{
                 setTimeout(()=>{
                     //call out-link 
-                    out.out1("test") 
+                    out.out1("test");
+                    //Create sub-service by services model, services can be add, set, remove, removeAll
+                    services.set({
+                        id: "id1",
+                        type: "service2Class",
+                        args: "argument",
+                        transports: {},
+                        links: [],
+                        on: {
+                            subout1: ()=>{}
+                        }
+                    })
                 }, 100)
             }
         }
