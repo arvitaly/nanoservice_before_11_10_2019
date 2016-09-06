@@ -9,11 +9,11 @@ describe("NanoService", () => {
     var ServiceController;
     beforeAll(() => {
         ServiceController = jasmine.createSpy();
-        Nanoservice = mock.require('./../index',{
+        Nanoservice = mock.require('./../index', {
             './../services': ServiceController
         });
     })
-    beforeEach(()=>{
+    beforeEach(() => {
         ServiceController.calls.reset();
     })
     it("when create without links and transports should work as event emitter with args and env", () => {
@@ -54,6 +54,15 @@ describe("NanoService", () => {
                 "tr1": transport
             }
         });
+        nanoservice(() => { }, {
+            transports: { "t": { type: "tr1", opts: fixture1 } }
+        })
+        expect(transport.calls.allArgs()).toEqual([[fixture1]]);
+    })
+    it("when call use, transports should added", () => {
+        var transport = jasmine.createSpy();
+        var nanoservice = Nanoservice();
+        nanoservice.use("tr1", transport);
         nanoservice(() => { }, {
             transports: { "t": { type: "tr1", opts: fixture1 } }
         })
@@ -115,10 +124,9 @@ describe("NanoService", () => {
                 services: {
                     "service2Class": fixture1
                 }
-            });            
+            });
             expect(ServiceController.calls.allArgs()).toEqual([[{ "service2Class": fixture1 }]]);
             expect(service1.calls.argsFor(0)[0].services).toBe(fixture2);
-            
         })
     })
 })

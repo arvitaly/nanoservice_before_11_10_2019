@@ -6,7 +6,7 @@ module.exports = (opts) => {
     opts = extend({
         transports: {}
     }, opts)
-    return (service, config) => {
+    var nanoserviceModule = (service, config) => {
         config = extend({
             args: null,
             services: {},
@@ -14,9 +14,7 @@ module.exports = (opts) => {
             links: [],
             env: {}
         }, config);
-
         var emitter = new EventEmitter2({});
-
         var ins = service({
             args: config.args,
             out: {
@@ -32,7 +30,6 @@ module.exports = (opts) => {
         for (var inName in ins) {
             emitter.on(inName, ins[inName]);
         }
-
         var transports = {};
         //Add transports
         for (var transportName in config.transports) {
@@ -48,11 +45,15 @@ module.exports = (opts) => {
                 case "in":
                     transports[link.transport].in(link.to, emitter.emit.bind(emitter, link.name));
                     break;
-                case "out":                 
+                case "out":
                     emitter.on(link.name, transports[link.transport].out(link.to));
                     break;
             }
         });
         return emitter;
     }
+    nanoserviceModule.use = (name, transport) => {
+        opts.transports[name] = transport;
+    }
+    return nanoserviceModule;
 }

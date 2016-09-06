@@ -4,10 +4,16 @@
     "sourceType": "module"
   },
   "extends": [
-    "eslint:recommended"
+    "eslint:recommended",
   ],
   "rules": {
-    "comma-dangle": 0
+    "comma-dangle": 0,
+    "no-multiple-empty-lines": [
+      "warn",
+      {
+        "max": 0
+      }
+    ]
   },
   "ignore": [
     "./node_modules"
