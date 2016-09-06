@@ -20,7 +20,7 @@ describe("NanoService", () => {
         var service1 = (opts) => {
             return {
                 in1: (a) => {
-                    opts.out.emit("out1", opts.args + a + fixture2 + opts.env("env1"))
+                    opts.out("out1", opts.args + a + fixture2 + opts.env("env1"))
                 }
             }
         }

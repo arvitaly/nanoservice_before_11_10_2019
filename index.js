@@ -16,10 +16,8 @@ module.exports = (opts) => {
         var emitter = new EventEmitter2({});
         var ins = service({
             args: config.args,
-            out: {
-                emit: (name, data) => {
-                    emitter.emit(name, data);
-                }
+            out: (name, data) => {
+                emitter.emit(name, data);
             },
             services: serviceController(config.services),
             env: (name) => {
