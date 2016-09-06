@@ -4,10 +4,11 @@
     "sourceType": "module"
   },
   "extends": [
-    "eslint:recommended",
+    "eslint:recommended"
   ],
   "rules": {
     "comma-dangle": 0,
+    "no-console": 1,
     "no-multiple-empty-lines": [
       "warn",
       {

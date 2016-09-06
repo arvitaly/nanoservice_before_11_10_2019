@@ -23,7 +23,6 @@ module.exports = (opts) => {
             },
             services: serviceController(config.services),
             env: (name) => {
-                console.log("name", name)
                 return config.env[name];
             }
         });
