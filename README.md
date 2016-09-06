@@ -17,7 +17,7 @@ Module for agile interservice-communication with support different transports (l
             in1: (data)=>{
                 setTimeout(()=>{
                     //call out-link 
-                    out.out1("test");
+                    out.out1("test" + env("env1"));
                     //Create sub-service by services model, services can be add, set, remove, removeAll
                     services.set({
                         id: "id1",
@@ -34,24 +34,27 @@ Module for agile interservice-communication with support different transports (l
         }
     }
     var config = {
-                transports: {
-                    tr1: {
-                        opts: {
-                            address: "sock"
-                        },
-                        type: "ipc-server"
-                    }
+        env={
+            env1: "envValue"
+        },
+        transports: {
+            tr1: {
+                opts: {
+                    address: "sock"
                 },
-                //All calls to out1 will be transported to ipc-server with address "sock" on emit-name "event1" 
-                links: [
-                    {
-                        transport: "tr1",
-                        type: "out",
-                        name: "out1",
-                        to: "event1"
-                    }
-                ]
+                type: "ipc-server"
             }
+        },
+        //All calls to out1 will be transported to ipc-server with address "sock" on emit-name "event1" 
+        links: [
+            {
+                transport: "tr1",
+                type: "out",
+                name: "out1",
+                to: "event1"
+            }
+        ]
+    }
     nanoservice(service, config)
 
 #Transports

@@ -1,6 +1,6 @@
 {
   "name": "nanoservice",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Module for agile interservice-communication with support many transports",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/arvitaly/node-nanoservice#readme",
   "dependencies": {
-    "deep-extend": "^0.4.1",
     "eventemitter2": "^2.1.0"
   },
   "devDependencies": {

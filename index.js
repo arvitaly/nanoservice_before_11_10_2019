@@ -1,13 +1,12 @@
 var errors = require('./errors');
-var extend = require('deep-extend');
 var EventEmitter2 = require('eventemitter2').EventEmitter2;
 var serviceController = require('./services');
 module.exports = (opts) => {
-    opts = extend({
+    opts = Object.assign({
         transports: {}
     }, opts)
     var nanoserviceModule = (service, config) => {
-        config = extend({
+        config = Object.assign({
             args: null,
             services: {},
             transports: {},
@@ -24,6 +23,7 @@ module.exports = (opts) => {
             },
             services: serviceController(config.services),
             env: (name) => {
+                console.log("name", name)
                 return config.env[name];
             }
         });
