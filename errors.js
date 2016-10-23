@@ -4,7 +4,10 @@ module.exports = {
         return {
             message: "Unknown transport type:: " + type,
             code: ++code,
-            transport: opts
+            transport: opts,
+            toString: () => {
+                return "Unknown transport type:: " + type
+            }
         }
     }
 }
