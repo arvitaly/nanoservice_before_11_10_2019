@@ -1,6 +1,7 @@
 {
   "name": "nanoservice",
-  "version": "1.0.5",
+  "version": "1.0.6",
+  "typings": "typings.d.ts",
   "description": "Module for agile interservice-communication with support many transports",
   "main": "index.js",
   "scripts": {

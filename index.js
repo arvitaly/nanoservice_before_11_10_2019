@@ -47,6 +47,7 @@ module.exports = (opts) => {
                     break;
             }
         });
+        emitter.links = config.links;
         return emitter;
     }
     nanoserviceModule.use = (name, transport) => {
