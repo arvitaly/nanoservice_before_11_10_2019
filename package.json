@@ -1,12 +1,11 @@
 {
   "name": "nanoservice",
   "version": "1.0.6",
-  "typings": "typings.d.ts",
   "description": "Module for agile interservice-communication with support many transports",
   "main": "index.js",
   "scripts": {
-    "test": "istanbul cover node_modules/jasmine/bin/jasmine.js",
-    "watch:test": "nodemon --exec \"npm test\""
+    "test": "tsc && tslint --project=tsconfig.json && jest --coverage --verbose",
+    "watch:test": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -20,12 +19,15 @@
   },
   "homepage": "https://github.com/arvitaly/node-nanoservice#readme",
   "dependencies": {
+    "@types/eventemitter2": "^2.2.1",
     "eventemitter2": "^2.1.0"
   },
   "devDependencies": {
-    "coveralls": "^2.11.12",
-    "istanbul": "^0.4.5",
-    "jasmine": "2.4.1",
-    "mock2": "0.0.7"
+    "@types/jest": "^16.0.1",
+    "coveralls": "^2.11.15",
+    "jest": "^17.0.3",
+    "mock2": "0.0.7",
+    "tslint": "^4.0.2",
+    "typescript": "^2.1.4"
   }
 }

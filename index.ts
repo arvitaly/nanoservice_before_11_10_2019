@@ -1,12 +1,14 @@
-"use strict";
-const eventemitter2_1 = require("eventemitter2");
-const errors_1 = require("./errors");
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = (opts) => {
+import { EventEmitter2 } from "eventemitter2";
+import errors from "./errors";
+import { } from "./typings";
+export interface IOpts {
+    transports: { [index: string]: ITransportClass };
+}
+export default (opts?: IOpts) => {
     const realOpts = Object.assign({
         transports: {},
-    }, opts);
-    const nanoserviceModule = (service, config) => {
+    } as { transports: { [index: string]: ITransportClass } }, opts);
+    const nanoserviceModule: NanoserviceFactory = (service, config) => {
         config = Object.assign({
             args: null,
             services: {},
@@ -14,7 +16,7 @@ exports.default = (opts) => {
             links: [],
             env: {},
         }, config);
-        const emitter = new eventemitter2_1.EventEmitter2({});
+        const emitter: INanoservice = new EventEmitter2({}) as INanoservice;
         const ins = service({
             args: config.args,
             out: (name, data) => {
@@ -32,7 +34,7 @@ exports.default = (opts) => {
                 emitter.on(inName, ins[inName]);
             });
         }
-        let transports = {};
+        let transports: { [index: string]: ITransport } = {};
         // Add transports
         if (typeof (config.transports) !== "undefined") {
             const configTransports = config.transports;
@@ -40,7 +42,7 @@ exports.default = (opts) => {
                 const transportConfig = configTransports[transportName];
                 const transportClass = realOpts.transports[transportConfig.type];
                 if (!transportClass) {
-                    throw new Error(errors_1.default.unknownTransportType(transportName, transportConfig));
+                    throw new Error(errors.unknownTransportType(transportName, transportConfig));
                 }
                 transports[transportName] = transportClass(transportConfig.opts);
             });
@@ -58,11 +60,42 @@ exports.default = (opts) => {
                 }
             });
             emitter.links = config.links;
-        }
-        else {
+        } else {
             emitter.links = [];
         }
         return emitter;
     };
     return nanoserviceModule;
+};
+export type ITransportClass = (opts: any) => ITransport;
+
+export type ITransport = {
+    in: (name: string, cb: (data: any) => any) => any;
+    out: (name: string) => (data: any) => any;
+};
+export type NanoserviceFactory = (service: IService, config: IServiceConfig) => INanoservice;
+export interface INanoservice extends EventEmitter2 {
+    links: ILink[];
+}
+export type IService = (opts: IServiceOpts) => { [index: string]: (data: any) => any } | undefined | void;
+export type IServiceOpts = {
+    args: any;
+    out: (name: string, data: any) => any;
+    env: (name: string) => any;
+};
+export type ILink = {
+    transport: string;
+    type: "in" | "out";
+    name: string;
+    to: string;
+};
+export type IServiceConfig = {
+    transports?: { [index: string]: IServiceTransport };
+    links?: ILink[];
+    args?: any;
+    env?: { [index: string]: any };
+};
+export type IServiceTransport = {
+    opts?: any;
+    type: string;
 };

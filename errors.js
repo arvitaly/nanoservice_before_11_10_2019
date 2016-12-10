@@ -1,13 +1,8 @@
-var code = 0;
-module.exports = {
+"use strict";
+let code = 0;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = {
     unknownTransportType: (type, opts) => {
-        return {
-            message: "Unknown transport type:: " + type,
-            code: ++code,
-            transport: opts,
-            toString: () => {
-                return "Unknown transport type:: " + type
-            }
-        }
-    }
-}
+        return "Unknown transport type:: " + type + " for transport " + JSON.stringify(opts);
+    },
+};
