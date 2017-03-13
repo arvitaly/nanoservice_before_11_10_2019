@@ -1,5 +1,7 @@
 #NanoService
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/arvitaly/nanoservice.svg)](https://greenkeeper.io/)
+
 [![npm version](https://badge.fury.io/js/nanoservice.svg)](https://badge.fury.io/js/nanoservice)
 [![Build Status](https://travis-ci.org/arvitaly/nanoservice.svg?branch=master)](https://travis-ci.org/arvitaly/nanoservice)
 [![Coverage Status](https://coveralls.io/repos/github/arvitaly/nanoservice/badge.svg?branch=master)](https://coveralls.io/github/arvitaly/nanoservice?branch=master)
