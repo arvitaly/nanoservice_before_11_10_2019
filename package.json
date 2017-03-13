@@ -20,13 +20,13 @@
   "homepage": "https://github.com/arvitaly/node-nanoservice#readme",
   "dependencies": {
     "@types/eventemitter2": "^2.2.1",
-    "eventemitter2": "^2.1.0"
+    "eventemitter2": "^3.0.2"
   },
   "devDependencies": {
-    "@types/jest": "^16.0.1",
+    "@types/jest": "^19.2.1",
     "coveralls": "^2.11.15",
-    "jest": "^17.0.3",
-    "mock2": "0.0.7",
+    "jest": "^19.0.2",
+    "mock2": "0.0.17",
     "tslint": "^4.0.2",
     "typescript": "^2.1.4"
   }
