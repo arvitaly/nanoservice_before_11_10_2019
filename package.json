@@ -23,7 +23,7 @@
     "eventemitter2": "^3.0.2"
   },
   "devDependencies": {
-    "@types/jest": "^19.2.1",
+    "@types/jest": "^19.2.2",
     "coveralls": "^2.11.15",
     "jest": "^19.0.2",
     "mock2": "0.0.17",
