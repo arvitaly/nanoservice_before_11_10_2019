@@ -21,6 +21,8 @@ Module for agile interservice-communication with support different transports (l
             });
         }
     }
+    // create event-emitter
+    const service1 = new Service1(1);
     // Create transport
     const transport = transportIPCServer({
         address: "sock"
@@ -36,7 +38,7 @@ Module for agile interservice-communication with support different transports (l
             }
         ];
     const config = { links };
-    nanoservice(service, config)
+    nanoservice(service1, config)
 
 # Transports
 
