@@ -8,53 +8,34 @@ Module for agile interservice-communication with support different transports (l
 
 
 #Example
-    var Nanoservice = require('nanoservice');
+    import nanoservice from("nanoservice");
     //Add transport with any name
-    var nanoservice = Nanoservice({'ipc-server': require('nanoservice-transport-ipc-server')});
-    var service = ({args, out, services, env})=>{
-        return {
-            //income link
-            in1: (data)=>{
+    const transportIPCServer = require("nanoservice-transport-ipc-server");
+    class Service1 extends EventEmitter {
+        constructor(args){
+            super();
+            this.on("in1", (data)=>{
                 setTimeout(()=>{
-                    //call out-link 
-                    out.out1("test" + env("env1"));
-                    //Create sub-service by services model, services can be add, set, remove, removeAll
-                    services.set({
-                        id: "id1",
-                        type: "service2Class",
-                        args: "argument",
-                        transports: {},
-                        links: [],
-                        on: {
-                            subout1: ()=>{}
-                        }
-                    })
-                }, 100)
-            }
+                    this.emit("test1");
+                }, 100);
+            });
         }
     }
-    var config = {
-        env={
-            env1: "envValue"
-        },
-        transports: {
-            tr1: {
-                opts: {
-                    address: "sock"
-                },
-                type: "ipc-server"
-            }
-        },
-        //All calls to out1 will be transported to ipc-server with address "sock" on emit-name "event1" 
-        links: [
+    // Create transport
+    const transport = transportIPCServer({
+        address: "sock"
+    });
+    // Define links
+    // All calls to out1 will be transported to ipc-server with address "sock" on emit-name "event1" 
+    const links = [
             {
-                transport: "tr1",
+                transport: transport,
                 type: "out",
                 name: "out1",
                 to: "event1"
             }
-        ]
-    }
+        ];
+    const config = { links };
     nanoservice(service, config)
 
 #Transports
@@ -63,10 +44,3 @@ Internal transport: https://github.com/arvitaly/nanoservice-transport-internal
 
 IPC transports: https://github.com/arvitaly/nanoservice-transport-ipc-client, https://github.com/arvitaly/nanoservice-transport-ipc-server
 
-#Event-emitter using
-
-Inside process, you can use nanoservice like as simple event-emitter.
-
-    var e = nanoservice(...);
-    e.on("out1",()=>{});
-    e.emit("in1", "data");
