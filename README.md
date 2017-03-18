@@ -1,4 +1,4 @@
-#NanoService
+# NanoService
 
 [![npm version](https://badge.fury.io/js/nanoservice.svg)](https://badge.fury.io/js/nanoservice)
 [![Build Status](https://travis-ci.org/arvitaly/nanoservice.svg?branch=master)](https://travis-ci.org/arvitaly/nanoservice)
@@ -7,7 +7,7 @@
 Module for agile interservice-communication with support different transports (like as socket). Every service can has many `in` and `out` links. Every link can has many connections by different transport (example, socket-client or socket-server), create another services and environment.
 
 
-#Example
+# Example
     import nanoservice from("nanoservice");
     //Add transport with any name
     const transportIPCServer = require("nanoservice-transport-ipc-server");
@@ -38,7 +38,7 @@ Module for agile interservice-communication with support different transports (l
     const config = { links };
     nanoservice(service, config)
 
-#Transports
+# Transports
 
 Internal transport: https://github.com/arvitaly/nanoservice-transport-internal
 
