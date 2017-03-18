@@ -1,6 +1,6 @@
 {
   "name": "nanoservice",
-  "version": "1.1.0",
+  "version": "2.1.0",
   "description": "Module for agile interservice-communication with support many transports",
   "main": "index.js",
   "scripts": {
@@ -9,25 +9,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arvitaly/node-nanoservice.git"
+    "url": "git+https://github.com/arvitaly/nanoservice.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/arvitaly/node-nanoservice/issues"
+    "url": "https://github.com/arvitaly/nanoservice/issues"
   },
-  "homepage": "https://github.com/arvitaly/node-nanoservice#readme",
+  "homepage": "https://github.com/arvitaly/nanoservice#readme",
   "dependencies": {
-    "@types/eventemitter2": "^2.2.1",
-    "eventemitter2": "^2.1.0"
+    "eventemitter3": "^2.0.2"
   },
   "devDependencies": {
-    "@types/jest": "^16.0.1",
-    "coveralls": "^2.11.15",
-    "jest": "^17.0.3",
-    "mock2": "0.0.7",
-    "tslint": "^4.0.2",
-    "typescript": "^2.1.4"
+    "@types/jest": "^19.2.2",
+    "coveralls": "^2.12.0",
+    "jest": "^19.0.2",
+    "mock2": "0.0.17",
+    "tslint": "^4.5.1",
+    "typescript": "^2.2.1"
   }
 }

@@ -1,1 +1,0 @@
-exports[`NanoService when transport not setted should throw error 1`] = `[Error: Unknown transport type:: t for transport {"type":"fix1","opts":"fix2"}]`;
